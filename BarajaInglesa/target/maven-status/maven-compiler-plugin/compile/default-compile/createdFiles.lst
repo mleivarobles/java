@@ -1,0 +1,9 @@
+cartas/Carta.class
+barajainglesa/BarajaInglesa.class
+barajainglesa/Color.class
+cartas/CartaNumeral.class
+cartas/Palo.class
+cartas/CartaconPalos.class
+barajainglesa/Principal.class
+cartas/CartaFigura.class
+cartas/CartaJoker.class

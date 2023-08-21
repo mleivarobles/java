@@ -1,0 +1,31 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>304</x><y>64</y><w>240</w><h>104</h></coordinates><panel_attributes>POS
+--
+
+__+RECARGO_POR_CUOTA: double = 3%__
+__+MIN_CANT_CUOTAS: INT = 1__
+__+MAX_CANT_CUOTAS: INT = 6__
+
+--
++efecturaPago(TarjetaCredito, double, int): Ticket</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>272</y><w>168</w><h>88</h></coordinates><panel_attributes>TarjetaCredito
+--
+- entidadBancaria: String
+- nroTarjeta : String
+- saldo : double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>152</x><y>512</y><w>168</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+EntidadFinanciera
+--
++VISA
+*MASTERCARD
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>352</y><w>128</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=1
+-entidadFinanciera</panel_attributes><additional_attributes>10;200;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>392</y><w>168</w><h>88</h></coordinates><panel_attributes>Persona
+--
+-rut: String
+-nombre: String
+-apellido: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>368</x><y>320</y><w>168</w><h>128</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=1
+-titular</panel_attributes><additional_attributes>190;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>248</y><w>168</w><h>80</h></coordinates><panel_attributes>Ticket
+--
+-nombreApellido: String
+-montoTotal: double
+-montoPorCuota double</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>160</y><w>56</w><h>128</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;140;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>496</x><y>176</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element></diagram>
