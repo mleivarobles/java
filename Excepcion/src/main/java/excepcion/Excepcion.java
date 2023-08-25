@@ -4,6 +4,7 @@
 
 package excepcion;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -22,8 +23,18 @@ public class Excepcion {
         try {
             valor = entrada.nextInt();
             resultado = 10 / valor;
-        } catch (Exception e) {
+        } 
+        catch (InputMismatchException e){
+            System.out.println("Ingreso no valido. Debe ser un entero!!!!");
+                
+        }
+        catch(ArithmeticException e){
+            System.out.println("Operación invalida. Division por cero");
+            
+        }
+        catch (Exception e) {
             System.out.println("Se ha producido un error " + e.getMessage());
+            e.printStackTrace(System.out); //tambien puede seguir el flujo System.err
             
         } finally {
             System.out.println(resultado);
