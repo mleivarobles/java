@@ -5,6 +5,8 @@
 package negocio;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -72,26 +74,23 @@ public class Tarjeta {
     
     private String generarCorrelativoTarjeta(){
         Random random = new Random();
-        String codigo = new String();
+        String numero = new String();
         
         for (int i = 0; i < 16; i++) {
             int digito = random.nextInt(10); //digito entre 0 y 9;
-            codigo+=digito;
+            numero+=digito;
         }
         
-        return codigo;
+        return numero;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Tarjeta{");
-        sb.append("codigo=").append(codigo);
-        sb.append(", clave=").append(clave);
-        sb.append(", monto=").append(monto);
-        sb.append(", vigencia=").append(vigencia);
-        sb.append(", trabajador=").append(trabajador);
-        sb.append('}');
-        return sb.toString();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd MMMM yyyy", 
+                new Locale("es", "ES"));
+        return "Tarjeta{" + "codigo=" + codigo + ", clave=" + clave 
+                + ", monto=" + monto 
+                + ", vigencia=" + vigencia.format(formato) + ", trabajador=" + trabajador + '}';
     }
+
 }
