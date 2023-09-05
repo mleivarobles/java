@@ -1,6 +1,6 @@
 public class ConjeturaCollatz {
     public static void main(String[] args) {
-        int numeroInicial = 47; // Cambia este valor por el número con el que quieras iniciar
+        int numeroInicial = 73; // Cambia este valor por el número con el que quieras iniciar
         
         System.out.println("Secuencia de Collatz para " + numeroInicial + ":");
         calcularCollatz(numeroInicial);
