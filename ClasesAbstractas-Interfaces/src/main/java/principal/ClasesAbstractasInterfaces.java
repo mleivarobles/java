@@ -1,4 +1,10 @@
-package clases;
+package principal;
+
+import clases.Auto;
+import clases.Moto;
+import clases.Persona;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -39,6 +45,6 @@ public class ClasesAbstractasInterfaces {
         // asignar dueño
         Persona juan = new Persona("144276825","Juan Perez",45);
         moto1.setDuenno(juan);
-        System.out.println(moto1);
+        System.out.println("\n " + moto1);
     }
 }
