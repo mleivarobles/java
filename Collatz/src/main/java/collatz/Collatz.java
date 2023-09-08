@@ -1,11 +1,26 @@
-public class ConjeturaCollatz {
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package collatz;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author "mleiva.robles@gmail.com - Mario Leiva Robles"
+ */
+public class Collatz {
+    
     public static void main(String[] args) {
-        int numeroInicial = 73; // Cambia este valor por el número con el que quieras iniciar
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Ingresar numero para calcular secuencia de Collatz: ");
+        int numeroInicial = entrada.nextInt();
         
         System.out.println("Secuencia de Collatz para " + numeroInicial + ":");
         calcularCollatz(numeroInicial);
     }
-
+    
     public static void calcularCollatz(int numero) {
         while (numero != 1) {
             System.out.print(numero + " -> ");
@@ -20,4 +35,3 @@ public class ConjeturaCollatz {
         System.out.println(numero); // Agregar el último número, que es 1
     }
 }
-
