@@ -20,13 +20,13 @@ public class MicroEmpresa {
 
     public static void main(String[] args) {
         
-        int opcion;
+        int opcion = 0;
         boolean salir = false;
         Scanner entrada = new Scanner(System.in);
         Cliente cliente = new Cliente();
         Solicitud solicitud = new Solicitud();
         
-        while(!salir){
+        while(opcion != 5){
             System.out.println("------------Menu------------");
             System.out.println("1.- Ingresar Cliente");
             System.out.println("2.- Ingresar Solicitud y Productos");
@@ -35,8 +35,6 @@ public class MicroEmpresa {
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1: ingresarCliente(cliente);
-                    break;
-                case 5: salir = true;
                     break;
                 case 2: ingresarSolicitud(solicitud, cliente);
                     break;
@@ -83,6 +81,8 @@ public class MicroEmpresa {
                 }
             }while(!validaCodigo);
             
+            entrada.nextLine(); //
+            
             producto.setSubCategoria(TipoSubcategoria.FRUTAS);
             System.out.print("Descripcion producto: ");
             String descripcion = entrada.nextLine();
@@ -98,6 +98,7 @@ public class MicroEmpresa {
                 }               
             }while(!validaPrecio);
             
+            entrada.nextLine();
             producto.setMedida(TipoMedida.UNIDAD);
             
             System.out.print("Otro producto?: SI/NO: ");

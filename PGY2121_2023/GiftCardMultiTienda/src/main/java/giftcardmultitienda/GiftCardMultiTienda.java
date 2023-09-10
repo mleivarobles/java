@@ -27,9 +27,10 @@ public class GiftCardMultiTienda {
             System.out.println("\n-----GiftCard Multitienda-----");
             System.out.println("1.- Ingresar Trabajador");
             System.out.println("2.- Ingresar Tarjeta");
-            System.out.println("3.- Realizar compra (monto)");
-            System.out.println("4.- Validar vigencia de tarjeta");
-            System.out.println("5.- Salir");
+            System.out.println("3.- Ver monto disponible");
+            System.out.println("4.- Realizar compra (monto)");
+            System.out.println("5.- Validar vigencia de tarjeta");
+            System.out.println("6.- Salir");
             System.out.print("Ingresar opcion:");
             opcion = entrada.nextInt();
             
@@ -40,7 +41,11 @@ public class GiftCardMultiTienda {
                 case 2: 
                     ingresarTarjeta(tarjeta, trabajador);
                     break;
-                case 3: 
+                case 3:
+                    System.out.println("El cupo disponible en la tarjeta " + tarjeta.getCodigo() 
+                            + " es " + tarjeta.getMonto());
+                    break;
+                case 4: 
                     System.out.print("Ingresar monto de compra: ");
                     double monto = entrada.nextDouble();
                     
@@ -50,7 +55,7 @@ public class GiftCardMultiTienda {
                         System.out.println("No alcanzó el monto de la tarjeta!!!");
                     }
                     break;
-                case 4:
+                case 5:
                     if ( tarjeta.validarVigenciaTarjeta()) {
                         System.out.println("La tarjeta está vigente!!!!");
                     } else {
@@ -60,7 +65,7 @@ public class GiftCardMultiTienda {
                     break;
             }
             
-        }while( opcion != 5);
+        }while( opcion != 6);
     }
 
     public static void ingresarTarjeta(Tarjeta tarjeta, Trabajador trabajador){

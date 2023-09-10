@@ -45,6 +45,10 @@ public class Tarjeta {
     public String getCodigo() {
         return codigo;
     }
+
+    public double getMonto() {
+        return monto;
+    }
     
     private boolean validarMontoCompra(double monto){
         return this.monto >= monto ;

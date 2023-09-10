@@ -29,9 +29,8 @@ public class ArrayLists {
     
         System.out.println("");
     //recorre elemento por elemento for-each
-    
     for(Persona p: lista){
-        System.out.println(p.getNombre());
+        System.out.print(p.getNombre() + " -> ");
     }
     
     
