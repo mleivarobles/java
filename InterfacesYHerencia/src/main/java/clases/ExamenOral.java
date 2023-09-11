@@ -15,6 +15,10 @@ public class ExamenOral extends Examen {
     public ExamenOral(NivelSatisfaccion nivelSatisfaccion, String fechaRealizacion) {
         super(fechaRealizacion);
         this.nivelSatisfaccion = nivelSatisfaccion;
+    }  
+
+    @Override
+    public boolean aprueba() {
+        return nivelSatisfaccion.ordinal() >= NivelSatisfaccion.SUFICIENTE.ordinal();
     }
-   
 }

@@ -26,8 +26,15 @@ public class Instituto {
         this.alumnos.add(alumno);
     }
     
-    
-    
-    
+    public int cantAlumnosAprobados(){
+        int cant = 0;
+        
+        for (Alumno alumno : alumnos) {
+            if ( alumno.aprueba()){
+                cant++;
+            }
+        }
+        return cant;
+    }
     
 }

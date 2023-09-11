@@ -24,5 +24,10 @@ public class ExamenEscrito extends Examen{
         this.duracion = duracion;
         this.notaNumerica = notaNumerica;
     }
+
+    @Override
+    public boolean aprueba() {
+        return notaNumerica >= NOTA_APROBACION && duracion <= TIEMPO_MAX_DURACION;
+    }
     
 }

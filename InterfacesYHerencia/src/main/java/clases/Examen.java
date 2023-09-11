@@ -4,20 +4,28 @@
  */
 package clases;
 
+import interfaces.Aprobable;
+
 /**
  *
  * @author mario
  */
-public abstract class Examen {
+public abstract class Examen implements Aprobable{
+    
+    /**
+     * Todos las clases que extiendas de examen deben
+     * implementar el metodo aprobo();
+     * 
+     * La clase Examen debe ser abstracta porque no tiene suficientes atributos
+     * para calcular si un examen aprobó
+     * Al hacerse abstracta delega esa labor en sus subcclases que si deben implementar
+     * el metodo.
+     */
     
     private String fechaRealizacion; //no es tipo fecha, solo referencial por eso es string y no tipo Date
     
-    
-    //este metodo es abstracto por que examen escrito y oral lo debeb
-    //implementar de formas distintas. Y como aparece un metodo abstracto la clase
-    // se covierte en abstracta
-
     public Examen(String fechaRealizacion) {
         this.fechaRealizacion = fechaRealizacion;
     }
+    
 }
