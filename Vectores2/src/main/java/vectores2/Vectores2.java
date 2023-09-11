@@ -15,11 +15,16 @@ import java.util.Scanner;
 public class Vectores2 {
 
     public static void main(String[] args) {
-        int[][] matriz = new int[4][4];
+        int[][] matriz = new int[5][5];
         Scanner sc = new Scanner(System.in);
         
         boolean salir = false;
         int opcion;
+        
+        /**
+         * Aclaracion imporante: La matriz se pasa como referencia a los metodos estaticos.
+         * No es necesario devolver la matriz modificada.
+        */
         
         rellenarMatrizAleatoria(matriz);
         imprimirMatriz(matriz);
@@ -30,7 +35,7 @@ public class Vectores2 {
             System.out.println("2.- Suma diagonal secundaria");
             System.out.println("3.- Suma filas");
             System.out.println("4.- Suma columnas");
-            System.out.println("5.- promedio");
+            System.out.println("5.- Promedio");
             System.out.println("6.- Salir!!!!");
             System.out.print("Elije una opcion: ");
             opcion = sc.nextInt();
@@ -40,14 +45,31 @@ public class Vectores2 {
                     break;
                 case 2: System.out.println("La diagonal secundaria suma " + sumaDiagonalSecundaria(matriz));
                     break;
-                case 3: sumaFilas(matriz);
+
+                case 3: sumaFilas(matriz); 
                     break;
                 case 4: sumaColumnas(matriz);
+                    break;
+                case 5: calcularPromedio(matriz);
                     break;
                 case 6: salir = true;
                     break;
             }
         }
+    }
+    
+    public static void calcularPromedio(int[][] matriz){
+        double suma = 0;
+        int contador = 0;
+        
+        for (int[] fila : matriz) {
+            for (int i : fila) {
+                suma+=i;
+                contador++;
+            }
+        }
+        double promedio = (suma / contador);
+        System.out.println("El promedio de la matriz es: " + promedio );
     }
     
     public static void rellenarMatrizAleatoria(int[][] matriz){
@@ -107,16 +129,28 @@ public class Vectores2 {
     }
     
     public static void sumaColumnas(int[][] matriz){
+        /**
+         * [53, 56, 15, 63]
+         * [48, 3, 76, 43]
+         * [22, 48, 85, 84]
+         * [75, 16, 84, 83]
+         */        
         int columnas = matriz[0].length;
-        int sumaColumnas[] = new int[columnas];
-        int filas = 0;
-        int suma = 0;
-        for (int[] i : matriz) {
-            for (int j : i) {
-                suma+=j;
-                
+        int sumaColumnas[] = new int[columnas]; //vector de suma de columnas
+        int columna = 0;
+        
+        for (int[] fila : matriz) { //recorro fila
+            for (int i : fila) {    // recorro columna por columna
+                sumaColumnas[columna]+= i;
+                columna++;
             }
-            
+            columna = 0;
         }
+        
+        System.out.print("\nSuma=[ ");
+        for (int i : sumaColumnas) {
+            System.out.print(i +" ");
+        }
+        System.out.print("]\n");
     }
 }
