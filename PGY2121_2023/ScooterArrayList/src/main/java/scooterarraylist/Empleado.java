@@ -16,5 +16,22 @@ public class Empleado {
     private int annoServicio;
     private int edad;
     private Puesto puesto;
- 
+
+    public Empleado(int rut, String nombreCompleto, char genero, int annoServicio, int edad, Puesto puesto) {
+        this.rut = rut;
+        this.nombreCompleto = nombreCompleto;
+        this.genero = genero;
+        this.annoServicio = annoServicio;
+        this.edad = edad;
+        this.puesto = puesto;
+    }
+    
+    public int getRut() {
+        return rut;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+    
 }

@@ -24,17 +24,33 @@ public class Empresa {
     }
     
     public boolean agregarEmpleado(Empleado empleado){
+        return this.empleados.add(empleado);
+    }
+    
+    public boolean buscarEmpleado(int rut){
+        for (Empleado empleado : empleados) {
+            if(empleado.getRut() == rut){
+                return true;
+            }
+        }
         return false;
     }
     
-    public boolean buscarEmpleado(Empleado empleado){
+    public boolean eliminarEmpleado(int rut){
+        for (Empleado empleado : empleados) {
+            if (buscarEmpleado(rut)){
+                this.empleados.remove(empleado);
+                return true;
+            }
+        }
         return false;
     }
     
-    public boolean eliminarEmpleado(Empleado empleado){
-        return false;
+    public void listarEmpleados(){
+        for (int i = 0; i < empleados.size(); i++) {
+            
+            System.out.println("["+(i+1)+"]: " + empleados.get(i).getNombreCompleto());
+        }
     }
     
-    public void listarEmpleado(){
-    }
 }
