@@ -32,11 +32,12 @@ public class Evaluacion1 {
             System.out.println("4.- Ingresar Nota Examen y estado final");
             System.out.println("5.- Salir");
             System.out.print("Ingresar opcion: ");
-            opcion = entrada.nextInt();
+            
+            //convierto la entrada de string a int
+            opcion = Integer.parseInt(entrada.nextLine()); 
             
             switch( opcion ){
                 case 1: 
-                    entrada.nextLine();
                     System.out.println("\nIngreso de información de estudiante");
                     System.out.print("Rut Estudiante: ");
                     String rut = entrada.nextLine();
@@ -53,7 +54,7 @@ public class Evaluacion1 {
                     int edad = 0;
                     do{
                         System.out.print("Edad Estudiante: ");
-                        edad = entrada.nextInt();
+                        edad = Integer.parseInt(entrada.nextLine());
                     }while( edad<18 || edad>99);
                     
                     estudiante.setRut(rut);
@@ -64,7 +65,6 @@ public class Evaluacion1 {
                     System.out.println(estudiante);
                     break;
                 case 2:
-                    entrada.nextLine();
                     System.out.println("\nIngreso de información de asignatura");
                     
                     System.out.print("Codigo asignatura: ");
@@ -78,11 +78,11 @@ public class Evaluacion1 {
                     double nota1, nota2, nota3;
                                         
                     System.out.print("Nota1: ");
-                    nota1 = entrada.nextDouble();
+                    nota1 = Double.parseDouble(entrada.nextLine());
                     System.out.print("Nota2: ");
-                    nota2 = entrada.nextDouble();
+                    nota2 = Double.parseDouble(entrada.nextLine());
                     System.out.print("Nota3: ");
-                    nota3 = entrada.nextDouble();
+                    nota3 = Double.parseDouble(entrada.nextLine());
                     
                     asignatura.setCodigo(codigo);
                     asignatura.setNombre(nombreAsignatura);
@@ -111,7 +111,7 @@ public class Evaluacion1 {
                     System.out.print("Nota examen: ");
                     
                     
-                    double examen = entrada.nextDouble();
+                    double examen = Double.parseDouble(entrada.nextLine());
                     double presentacion = asignatura.getPresentacion();
                     double notaFinal = redondear(calcularNotaFinal(presentacion, examen));
                    
