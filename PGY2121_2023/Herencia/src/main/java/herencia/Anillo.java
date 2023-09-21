@@ -8,6 +8,7 @@ package herencia;
  *
  * @author mario
  */
+//La subclase Anillo es un tipo de Joya (hereda)
 public class Anillo extends Joya{
     
     private int medida;
