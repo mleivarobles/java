@@ -53,10 +53,10 @@ public class Actividad21 {
             
             switch(opcion){
                 case 1: 
-                    System.out.println("Lista1");
+                    punk.listarCancion();
                     break;
                 case 2: 
-                    System.out.println("Lista2");
+                    pop.listarCancion();
                     break;
                 case 3:
                     System.out.println("Adios!!!");

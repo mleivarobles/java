@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ListaReproduccion {
     
     private String nombre;
-    ArrayList<Cancion> listaCanciones;
+    private ArrayList<Cancion> listaCanciones;
 
     public ListaReproduccion(String nombre) {
         this.nombre = nombre;
@@ -22,6 +22,12 @@ public class ListaReproduccion {
     
     public void agregarCancion(Cancion cancion){
         this.listaCanciones.add(cancion);
+    }
+    
+    public void listarCancion(){
+        for (int i = 0; i < listaCanciones.size(); i++) {
+            System.out.println("["+(i+1)+"]: " + listaCanciones.get(i));            
+        }
     }
 
     @Override
