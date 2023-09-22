@@ -9,10 +9,8 @@ package empresaeventos;
  * @author mario
  */
 public enum TipoEvento {
-    
-    cumpleaños,
-    matrimonio,
-    cena,
-    fiesta;
-
+    CUMPLEAÑOS,
+    MATRIMONIO,
+    CENA,
+    FIESTA
 }
