@@ -34,16 +34,43 @@ public class Empresa {
     }
     
     public void totalVentasPorTipo(){
-        //cumpleaños", "matrimonio","cena","fiesta"
+        int cantEventos = TipoEvento.values().length;
+        int[] totalVentas = new int[cantEventos]; //creo un arreglo para almacenar las ventas
         
-        
-        
-        System.out.println("Pendiente de implementar");
+        for (Evento e : this.eventos) {
+            totalVentas[ e.getTipo().ordinal()] += e.getPrecio();
+        }
+        System.out.println("\nTotal ventas por tipo:");
+        int i = 0;
+        for (TipoEvento value : TipoEvento.values()) {
+            System.out.println(value.toString() + ": " + totalVentas[i]);
+            i++;
+        }
     }
     
-    public TipoEvento tipoEventoMasSolicitado(){
-        System.out.println("Pendiente de implementar");
-        return null;
+    public void tipoEventoMasSolicitado(){
+        int cantEventos = TipoEvento.values().length;
+        int[] totalEventos = new int[cantEventos]; //creo un arreglo para almacenar las ventas
+        
+        for (Evento e : eventos) {
+            totalEventos[ e.getTipo().ordinal()] += 1;
+        }
+        
+        System.out.println("\nTipo de Evento más solicitado:");
+        int mas = 0;
+        for (int i = 0; i < cantEventos; i++) {
+            if ( totalEventos[i] > mas ){
+                mas = i;
+            }
+        }
+        
+        for (Evento e : eventos) {
+            if ( mas == e.getTipo().ordinal()){
+                System.out.println(e.getTipo());
+                break;
+            }
+        }
+        
     }
 
     @Override

@@ -30,15 +30,23 @@ public class Evento implements Comparable<Evento> {
         this.codigo = Evento.contador; //por cada objeto creado incremento en uno el contador
     }
     
-    public Evento(LocalDate fechaEvento, double precio, int cantidadPersonas) {
+    public Evento(LocalDate fechaEvento, double precio, int cantidadPersonas, TipoEvento tipoEvento) {
         
         Random random = new Random();
         this.fechaEvento = fechaEvento;
         this.precio = precio;
         this.cantidadPersonas = cantidadPersonas;
-        this.tipo = TipoEvento.CENA;  //[random.nextInt(4)]; //0,1,2,3        
+        this.tipo = tipoEvento;
         Evento.contador++;
         this.codigo = Evento.contador; //por cada objeto creado incremento en uno el contador
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public TipoEvento getTipo() {
+        return tipo;
     }
     
     public LocalDate getFechaEvento() {

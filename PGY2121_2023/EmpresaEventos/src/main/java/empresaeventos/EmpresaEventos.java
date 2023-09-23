@@ -36,11 +36,11 @@ public class EmpresaEventos {
         
         
         //Creo varios eventos
-        Evento evento1 = new Evento(fechaEvento1,4500,165);
-        Evento evento2 = new Evento(fechaEvento2,13000,48);
-        Evento evento3 = new Evento(fechaEvento3,9000,90);
-        Evento evento4 = new Evento(fechaEvento4,22000,30);
-        Evento evento5 = new Evento(fechaEvento5,11000,45);
+        Evento evento1 = new Evento(fechaEvento1,4500,165, TipoEvento.CUMPLEAÑOS);
+        Evento evento2 = new Evento(fechaEvento2,13000,48, TipoEvento.FIESTA);
+        Evento evento3 = new Evento(fechaEvento3,9000,90, TipoEvento.CENA);
+        Evento evento4 = new Evento(fechaEvento4,22000,30, TipoEvento.MATRIMONIO);
+        Evento evento5 = new Evento(fechaEvento5,11000,45, TipoEvento.MATRIMONIO);
         
         //Agrego los eventos a la lista
         empresa1.agregarEventos(evento1);
@@ -54,6 +54,10 @@ public class EmpresaEventos {
         
         
         //Determinar el total de ventas por tipo de evento
+        empresa1.totalVentasPorTipo();
+        
+        //Determinar el tipo de evento más solicitado 
+        empresa1.tipoEventoMasSolicitado();
         
     }
 }
