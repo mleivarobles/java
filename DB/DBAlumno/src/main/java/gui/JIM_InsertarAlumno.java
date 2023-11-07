@@ -4,20 +4,22 @@
  */
 package gui;
 
+import dao.DAOAlumno;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import model.Alumno;
+import dao.DAOAlumno;
 
 /**
  *
  * @author mario
  */
-public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
+public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JIM_Insertar
      */
-    public JIM_insertarAlumno() {
+    public JIM_InsertarAlumno() {
         initComponents();
     }
 
@@ -39,7 +41,7 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
         jtxt_nombre = new javax.swing.JTextField();
         jtxt_edad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jbtn_guardarAlumno = new javax.swing.JButton();
+        jbtn_insertarAlumno = new javax.swing.JButton();
         jbtn_salir = new javax.swing.JButton();
 
         setClosable(true);
@@ -93,11 +95,11 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
-        jbtn_guardarAlumno.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jbtn_guardarAlumno.setText("Guardar");
-        jbtn_guardarAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_insertarAlumno.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jbtn_insertarAlumno.setText("Guardar");
+        jbtn_insertarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_guardarAlumnoActionPerformed(evt);
+                jbtn_insertarAlumnoActionPerformed(evt);
             }
         });
 
@@ -115,7 +117,7 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jbtn_guardarAlumno)
+                .addComponent(jbtn_insertarAlumno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jbtn_salir)
                 .addGap(65, 65, 65))
@@ -126,7 +128,7 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn_salir)
-                    .addComponent(jbtn_guardarAlumno))
+                    .addComponent(jbtn_insertarAlumno))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -158,25 +160,25 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbtn_salirActionPerformed
 
-    private void jbtn_guardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_guardarAlumnoActionPerformed
+    private void jbtn_insertarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_insertarAlumnoActionPerformed
        
         try {
             String rut = jtxt_rut.getText();
             String nombre = jtxt_nombre.getText();
             int edad = Integer.parseInt(jtxt_edad.getText());
             
-            Alumno alumno = new Alumno("rut","nombre",edad);
-            if(!alumno.buscarAlumno()){
-                alumno.guardarAlumno();
+            Alumno alumno = new Alumno(rut,nombre,edad);
+            if(DAOAlumno.buscarAlumno(rut) == null){
+                DAOAlumno.ingresarAlumno(alumno);
                 System.out.println("Alumno ingresado " + rut);
                 JOptionPane.showMessageDialog(null,"Alumno ingreso correctamente " + rut);
             } else{
-                JOptionPane.showMessageDialog(null,"El alumno no pudo ser ingresado " + rut);
+                JOptionPane.showMessageDialog(null,"Alumno no pudo ser ingresado " + rut);
             }            
         } catch (HeadlessException | NumberFormatException e) {
             System.out.println("Error al ingresar alumno: " +e.toString());
         }
-    }//GEN-LAST:event_jbtn_guardarAlumnoActionPerformed
+    }//GEN-LAST:event_jbtn_insertarAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -186,7 +188,7 @@ public class JIM_insertarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton jbtn_guardarAlumno;
+    private javax.swing.JButton jbtn_insertarAlumno;
     private javax.swing.JButton jbtn_salir;
     private javax.swing.JTextField jtxt_edad;
     private javax.swing.JTextField jtxt_nombre;

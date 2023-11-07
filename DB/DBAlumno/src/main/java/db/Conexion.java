@@ -26,11 +26,13 @@ public class Conexion {
     
     public static void conectar(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            //com.mysql.jdbc.Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
             conn = DriverManager.getConnection(url, user, password);
             
             if(conn != null){
-                System.out.println("Conexión ok con " + bd);
+                System.out.println("Conexión ok con la bd: " + bd);
             }
             
         } catch (ClassNotFoundException | SQLException e) {

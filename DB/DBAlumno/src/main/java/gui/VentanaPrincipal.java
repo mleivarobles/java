@@ -14,11 +14,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VentanaPrincipal
      */
     
-    JIM_insertarAlumno jimInsertarAlumno = new JIM_insertarAlumno();
+    JIM_InsertarAlumno jimInsertarAlumno = new JIM_InsertarAlumno();
+    JIM_ListarAlumno jimListarAlumno = new JIM_ListarAlumno();
     
     public VentanaPrincipal() {
         initComponents();
         this.add(jimInsertarAlumno);
+        this.add(jimListarAlumno);
     }
 
     /**
@@ -31,38 +33,57 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmi_insertar = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jmi_salir = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenu();
+        jmi_insertar = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jmi_listar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenu();
+        jmi_salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jmi_insertar.setText("Alumno");
+        jMenuItem2.setText("Alumno");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem2.setText("Insertar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmi_insertar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmi_insertar.setText("Insertar");
+        jmi_insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmi_insertarActionPerformed(evt);
             }
         });
-        jmi_insertar.add(jMenuItem2);
+        jMenuItem2.add(jmi_insertar);
 
-        jMenuBar1.add(jmi_insertar);
+        jMenuItem3.setText("Editar");
+        jMenuItem2.add(jMenuItem3);
 
-        jmi_salir.setText("Salir");
+        jMenuBar1.add(jMenuItem2);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenu1.setText("Listar");
+
+        jmi_listar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmi_listar.setText("Listar");
+        jmi_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_listarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmi_listar);
+
+        jMenuBar1.add(jMenu1);
+
         jMenuItem1.setText("Salir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+
+        jmi_salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmi_salir.setText("Salir");
+        jmi_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmi_salirActionPerformed(evt);
             }
         });
-        jmi_salir.add(jMenuItem1);
+        jMenuItem1.add(jmi_salir);
 
-        jMenuBar1.add(jmi_salir);
+        jMenuBar1.add(jMenuItem1);
 
         setJMenuBar(jMenuBar1);
 
@@ -70,7 +91,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 446, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,13 +101,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmi_salirActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmi_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_insertarActionPerformed
         this.jimInsertarAlumno.show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmi_insertarActionPerformed
+
+    private void jmi_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarActionPerformed
+        this.jimListarAlumno.show();
+    }//GEN-LAST:event_jmi_listarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,10 +149,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu jmi_insertar;
-    private javax.swing.JMenu jmi_salir;
+    private javax.swing.JMenu jMenuItem1;
+    private javax.swing.JMenu jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jmi_insertar;
+    private javax.swing.JMenuItem jmi_listar;
+    private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
 }

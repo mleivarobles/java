@@ -148,7 +148,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="jbtn_guardarAlumno" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbtn_insertarAlumno" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="66" max="32767" attributes="0"/>
                   <Component id="jbtn_salir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbtn_salir" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtn_guardarAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtn_insertarAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -169,7 +169,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jbtn_guardarAlumno">
+        <Component class="javax.swing.JButton" name="jbtn_insertarAlumno">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="18" style="0"/>
@@ -177,7 +177,7 @@
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn_guardarAlumnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn_insertarAlumnoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbtn_salir">
