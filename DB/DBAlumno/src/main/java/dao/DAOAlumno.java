@@ -8,6 +8,7 @@ import db.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Alumno;
 
 /**
@@ -16,28 +17,33 @@ import model.Alumno;
  */
 public class DAOAlumno {
     
-    public static void ingresarAlumno(Alumno alumno){
+    public static boolean ingresarAlumno(Alumno alumno){
         String strSQL = new String();
-        try {
-            //INSERT INTO alumno VALUES ('8723','Alejandra Soto',29);
-            
-            String rut = alumno.getRut();
-            String nombre = alumno.getNombre();
-            int edad = alumno.getEdad();
-            
-            String sql = "'"+rut+"',"+"'"+nombre+"',"+edad;
-            System.out.println("sql:"+sql);
-            strSQL = "INSERT INTO alumno VALUES("+sql+")";
-            
-            Conexion.conectar();
-            Conexion.sentencia = Conexion.conn.prepareStatement(strSQL);
-            Conexion.sentencia.execute(strSQL);
-            System.out.println("Registro ingresado en la tabla alumno");
-            Conexion.desconectar();
-             
-        } catch (SQLException e) {
-            System.out.println("Error al ingresar alumno:" + strSQL);
+        String rut = alumno.getRut();
+        
+        if(buscarAlumno(rut) == null){
+            try {
+                //INSERT INTO alumno VALUES ('8723','Alejandra Soto',29);
+                
+                String nombre = alumno.getNombre();
+                int edad = alumno.getEdad();
+
+                String sql = "'"+rut+"',"+"'"+nombre+"',"+edad;
+                System.out.println("sql:"+sql);
+                strSQL = "INSERT INTO alumno VALUES("+sql+")";
+
+                Conexion.conectar();
+                Conexion.sentencia = Conexion.conn.prepareStatement(strSQL);
+                Conexion.sentencia.execute(strSQL);
+                System.out.println("Registro ingresado en la tabla alumno");
+                Conexion.desconectar();
+                return true;
+
+            } catch (SQLException e) {
+                System.out.println("Error al ingresar alumno:" + strSQL);
+            }
         }
+        return false;
     }
     
     public static Alumno buscarAlumno(String rut){
@@ -64,8 +70,12 @@ public class DAOAlumno {
         return null;
     }
     
-    public static void actualizarAlumno(String rut, String nombre, int edad){
+    public static boolean actualizarAlumno(Alumno alumno){
         String strSQL = new String();
+        String rut = alumno.getRut();
+        String nombre = alumno.getNombre();
+        int edad = alumno.getEdad();
+        
         try {
             /*
             UPDATE alumno
@@ -80,13 +90,15 @@ public class DAOAlumno {
             Conexion.sentencia.execute(strSQL);
             System.out.println("Registro alumno actualizado");
             Conexion.desconectar();
+            return true;
             
         } catch (SQLException e) {
             System.out.println("Error en actualizar alumno: " + strSQL);
         }
+        return false;
     }
     
-    public static void eliminarAlumno(String rut){
+    public static boolean eliminarAlumno(String rut){
         String strSQL = new String();
         try {
             /*
@@ -94,16 +106,26 @@ public class DAOAlumno {
             WHERE rut = 'rut';
             */
             
-            strSQL = "DELETE FROM alumno WHERE rut = '"+rut+"+";
+            strSQL = "DELETE FROM alumno WHERE rut = '"+rut+"'";
             Conexion.conectar();
             Conexion.sentencia = Conexion.conn.prepareStatement(strSQL);
-            Conexion.sentencia.execute(strSQL);
-            System.out.println("Alumno eliminado de la BD");
-            Conexion.desconectar();
             
+            int resp = JOptionPane.showConfirmDialog(null, "Confirma eliminación?",
+                    "Eliminar alumno", JOptionPane.OK_CANCEL_OPTION);
+            
+            if(resp == JOptionPane.YES_OPTION){
+                Conexion.sentencia.execute(strSQL);
+                System.out.println("Alumno eliminado de la BD. Rut: " + rut);
+            }else{
+                return false;
+            }
+            Conexion.sentencia.close();
+            Conexion.desconectar();
+            return true;
         } catch (SQLException e) {
             System.out.println("Error al eliminar alumno " + strSQL);
         }
+        return false;
     }
     
     public static ArrayList<Alumno> listar(){
@@ -111,7 +133,7 @@ public class DAOAlumno {
         try {
             
             //SELECT * FROM alumno;
-            String strSQL = "SELECT * FROM alumno";
+            String strSQL = "SELECT * FROM alumno ORDER BY 2";
             Conexion.conectar();
             Conexion.sentencia = Conexion.conn.prepareStatement(strSQL);
             ResultSet result = Conexion.sentencia.executeQuery(strSQL);

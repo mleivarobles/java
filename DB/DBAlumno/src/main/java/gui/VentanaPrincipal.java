@@ -16,11 +16,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     JIM_InsertarAlumno jimInsertarAlumno = new JIM_InsertarAlumno();
     JIM_ListarAlumno jimListarAlumno = new JIM_ListarAlumno();
+    JIM_EditarAlumno jimEditarAlumno = new JIM_EditarAlumno();
+    JIM_EliminarAlumno jimEliminarAlumno = new JIM_EliminarAlumno();
+            
     
     public VentanaPrincipal() {
         initComponents();
         this.add(jimInsertarAlumno);
         this.add(jimListarAlumno);
+        this.add(jimEditarAlumno);
+        this.add(jimEliminarAlumno);
     }
 
     /**
@@ -36,6 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenu();
         jmi_insertar = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jmi_listar = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenu();
@@ -55,7 +61,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem2.add(jmi_insertar);
 
         jMenuItem3.setText("Editar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenuItem2.add(jMenuItem3);
+
+        jMenuItem4.setText("Eliminar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenuItem2.add(jMenuItem4);
 
         jMenuBar1.add(jMenuItem2);
 
@@ -91,7 +110,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGap(0, 432, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,6 +131,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jmi_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarActionPerformed
         this.jimListarAlumno.show();
     }//GEN-LAST:event_jmi_listarActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        this.jimEditarAlumno.show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        this.jimEliminarAlumno.show();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuItem1;
     private javax.swing.JMenu jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jmi_insertar;
     private javax.swing.JMenuItem jmi_listar;
     private javax.swing.JMenuItem jmi_salir;

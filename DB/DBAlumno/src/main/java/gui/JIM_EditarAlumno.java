@@ -4,7 +4,6 @@
  */
 package gui;
 
-import dao.DAOAlumno;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import model.Alumno;
@@ -14,12 +13,12 @@ import dao.DAOAlumno;
  *
  * @author mario
  */
-public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
+public class JIM_EditarAlumno extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JIM_Insertar
      */
-    public JIM_InsertarAlumno() {
+    public JIM_EditarAlumno() {
         initComponents();
     }
 
@@ -40,12 +39,13 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
         jtxt_rut = new javax.swing.JTextField();
         jtxt_nombre = new javax.swing.JTextField();
         jtxt_edad = new javax.swing.JTextField();
+        jbtn_buscarRut = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jbtn_insertarAlumno = new javax.swing.JButton();
+        jbtn_editarAlumno = new javax.swing.JButton();
         jbtn_salir = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Ingreso de datos - Alumno");
+        setTitle("Modificar");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -53,7 +53,7 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar Alumno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Liberation Sans", 1, 15))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar rut", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Liberation Sans", 1, 15))); // NOI18N
         jPanel1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
 
         jLabel1.setText("Rut");
@@ -62,49 +62,73 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Edad");
 
+        jtxt_nombre.setEnabled(false);
+
+        jtxt_edad.setEnabled(false);
+
+        jbtn_buscarRut.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jbtn_buscarRut.setText("Buscar");
+        jbtn_buscarRut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarRutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtxt_rut, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(jtxt_nombre)
-                    .addComponent(jtxt_edad))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(63, 63, 63)
+                                .addComponent(jtxt_rut))
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtn_buscarRut))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jtxt_edad, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                            .addComponent(jtxt_nombre))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jtxt_rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtxt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(jtxt_rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtn_buscarRut))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jtxt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
-        jbtn_insertarAlumno.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jbtn_insertarAlumno.setText("Guardar");
-        jbtn_insertarAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_editarAlumno.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jbtn_editarAlumno.setText("Modificar");
+        jbtn_editarAlumno.setEnabled(false);
+        jbtn_editarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_insertarAlumnoActionPerformed(evt);
+                jbtn_editarAlumnoActionPerformed(evt);
             }
         });
 
@@ -121,11 +145,11 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jbtn_insertarAlumno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addComponent(jbtn_editarAlumno)
+                .addGap(51, 51, 51)
                 .addComponent(jbtn_salir)
-                .addGap(65, 65, 65))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +157,7 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn_salir)
-                    .addComponent(jbtn_insertarAlumno))
+                    .addComponent(jbtn_editarAlumno))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -165,7 +189,7 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbtn_salirActionPerformed
 
-    private void jbtn_insertarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_insertarAlumnoActionPerformed
+    private void jbtn_editarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarAlumnoActionPerformed
        
         try {
             String rut = jtxt_rut.getText();
@@ -173,9 +197,9 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
             int edad = Integer.parseInt(jtxt_edad.getText());
             
             Alumno alumno = new Alumno(rut,nombre,edad);
-            if(DAOAlumno.ingresarAlumno(alumno)){
-                System.out.println("Alumno ingresado " + rut);
-                JOptionPane.showMessageDialog(null,"Alumno ingresado correctamente " + rut);
+            if(DAOAlumno.actualizarAlumno(alumno)){
+                System.out.println("Alumno actualizado " + rut);
+                JOptionPane.showMessageDialog(null,"Alumno actualizado correctamente " + rut);
             } else{
                 JOptionPane.showMessageDialog(null,"Alumno no pudo ser ingresado " + rut);
             }            
@@ -183,8 +207,15 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
             System.out.println("Error al ingresar alumno: " +e.toString());
         }
         limpiarCampos();
-    }//GEN-LAST:event_jbtn_insertarAlumnoActionPerformed
+        deshabilitarCampos();
+    }//GEN-LAST:event_jbtn_editarAlumnoActionPerformed
 
+    private void deshabilitarCampos(){
+        this.jtxt_nombre.setEnabled(false);
+        this.jtxt_edad.setEnabled(false);
+        this.jbtn_editarAlumno.setEnabled(false);
+    }
+    
     private void limpiarCampos(){
         jtxt_rut.setText("");
         jtxt_nombre.setText("");
@@ -195,6 +226,28 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
         limpiarCampos();
     }//GEN-LAST:event_formComponentShown
 
+    private void jbtn_buscarRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarRutActionPerformed
+        
+        String rut = jtxt_rut.getText();
+        Alumno alumno = DAOAlumno.buscarAlumno(rut);
+        try {
+            if(alumno != null){
+                this.jtxt_nombre.setEnabled(true);
+                this.jtxt_edad.setEnabled(true);
+                this.jbtn_editarAlumno.setEnabled(true);
+                        
+                this.jtxt_nombre.setText(alumno.getNombre());
+                this.jtxt_edad.setText(String.valueOf(alumno.getEdad()));
+                
+           }else{
+                JOptionPane.showMessageDialog(null,"El alumno no existe " + rut);
+            }
+            
+        } catch (HeadlessException e) {
+            System.out.println("Error en conversion de datos " + e.toString());
+        }
+    }//GEN-LAST:event_jbtn_buscarRutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -203,7 +256,8 @@ public class JIM_InsertarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton jbtn_insertarAlumno;
+    private javax.swing.JButton jbtn_buscarRut;
+    private javax.swing.JButton jbtn_editarAlumno;
     private javax.swing.JButton jbtn_salir;
     private javax.swing.JTextField jtxt_edad;
     private javax.swing.JTextField jtxt_nombre;
