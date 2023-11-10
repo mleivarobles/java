@@ -196,17 +196,22 @@ public class JIM_EliminarAlumno extends javax.swing.JInternalFrame {
 
     private void jbtn_eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarAlumnoActionPerformed
        
+        
         try {
             String rut = jtxt_rut.getText();
+            String nombre = jtxt_nombre.getText();
             
-            if(DAOAlumno.eliminarAlumno(rut)){
-                System.out.println("Alumno eliminado" + rut);
-                JOptionPane.showMessageDialog(null,"Alumno eliminado correctamente " + rut);
-            } else{
-                JOptionPane.showMessageDialog(null,"Alumno no pudo ser eliminado " + rut);
-            }            
+            int resp = JOptionPane.showConfirmDialog(null, "Confirma eliminación de alumno " + nombre + "?",
+                    "Eliminar alumno", JOptionPane.OK_CANCEL_OPTION);
+            if(resp == JOptionPane.YES_OPTION){
+                if(DAOAlumno.eliminarAlumno(rut)){
+                    JOptionPane.showMessageDialog(null,"Alumno eliminado correctamente " + nombre);
+                } else{
+                    JOptionPane.showMessageDialog(null,"Alumno no pudo ser eliminado " + rut);
+                }
+            }
         } catch (HeadlessException | NumberFormatException e) {
-            System.out.println("Error al ingresar alumno: " +e.toString());
+            System.out.println("Error al eliminar alumno: " +e.toString());
         }
         limpiarCampos();
     }//GEN-LAST:event_jbtn_eliminarAlumnoActionPerformed

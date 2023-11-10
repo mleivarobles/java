@@ -48,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jmi_salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Registro de Alumno");
 
         jMenuItem2.setText("Alumno");
 

@@ -109,23 +109,16 @@ public class DAOAlumno {
             strSQL = "DELETE FROM alumno WHERE rut = '"+rut+"'";
             Conexion.conectar();
             Conexion.sentencia = Conexion.conn.prepareStatement(strSQL);
-            
-            int resp = JOptionPane.showConfirmDialog(null, "Confirma eliminación?",
-                    "Eliminar alumno", JOptionPane.OK_CANCEL_OPTION);
-            
-            if(resp == JOptionPane.YES_OPTION){
-                Conexion.sentencia.execute(strSQL);
-                System.out.println("Alumno eliminado de la BD. Rut: " + rut);
-            }else{
-                return false;
-            }
+            Conexion.sentencia.execute(strSQL);
+            System.out.println("Alumno eliminado de la BD. Rut: " + rut);
             Conexion.sentencia.close();
             Conexion.desconectar();
-            return true;
+            
         } catch (SQLException e) {
             System.out.println("Error al eliminar alumno " + strSQL);
+            return false;
         }
-        return false;
+        return true;
     }
     
     public static ArrayList<Alumno> listar(){

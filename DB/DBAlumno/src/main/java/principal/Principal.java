@@ -10,7 +10,7 @@ import gui.VentanaPrincipal;
  *
  * @author mario
  */
-public class DBAlumno {
+public class Principal {
 
     public static void main(String[] args) {
         VentanaPrincipal ventana = new VentanaPrincipal();
