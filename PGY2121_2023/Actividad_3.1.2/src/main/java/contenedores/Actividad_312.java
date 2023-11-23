@@ -15,9 +15,5 @@ public class Actividad_312 {
         ventana1.setVisible(true);
         ventana1.setLocationRelativeTo(null);
         
-        Ventana4 ventana4 = new Ventana4();
-        ventana4.setVisible(true);
-        ventana4.setLocationRelativeTo(null);
-        
     }
 }
