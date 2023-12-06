@@ -26,8 +26,13 @@ public class Venta {
 
     public Vehiculo getVehiculo() {
         return vehiculo;
+        
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
