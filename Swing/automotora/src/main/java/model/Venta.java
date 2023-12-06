@@ -16,5 +16,33 @@ public class Venta {
     private Vehiculo vehiculo;
     private Date fechaVenta;
     private double precioVenta;
+
+    public Venta(Cliente cliente, Vehiculo vehiculo, double precioVenta) {
+        this.cliente = cliente;
+        this.vehiculo = vehiculo;
+        this.fechaVenta = new Date(); //fecha actual
+        this.precioVenta = precioVenta;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+    
+    public Date getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+    
+    @Override
+    public String toString() {
+        return "Venta{" + "cliente=" + cliente + ", vehiculo=" + vehiculo + ", fechaVenta=" + fechaVenta + ", precioVenta=" + precioVenta + '}';
+    }
     
 }
