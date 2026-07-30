@@ -54,7 +54,7 @@ public class NotasEstudiantes {
         System.out.println("Reporte de Notas");
         for (int i = 0; i < notas.length; i++) {
             System.out.print(nombres[i] +": ");
-            for (int j = 0; j < notas.length; j++) {
+            for (int j = 0; j < notas[i].length-1; j++) {
                 System.out.print(notas[i][j] + " ");
             }
             System.out.print("| Promedio: " + notas[i][3] +"\n");
